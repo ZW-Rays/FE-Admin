@@ -1,0 +1,25 @@
+.sidebar {
+    width: 20rem;
+    height: 100vh;
+    background-color: var(--main-color2);
+}
+
+.sidebar-content {
+    padding: 1.2rem 2rem;
+    font-size: 1.2rem;
+    cursor: pointer;
+}
+
+.sidebar-content:hover {
+    background-color: var(--main-color1);
+}
+
+.sidebar-content-active {
+    background-color: var(--main-color1);
+}
+
+.sidebar-content a {
+    text-decoration: none;
+    color: var(--add-color1);
+    margin-left: 1rem;
+}
