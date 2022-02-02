@@ -15,8 +15,8 @@ export default function Navbar() {
         <FontAwesomeIcon icon={faUser} size='2x'/>
       </button>
       <div className={style['navbar-dropdown-content']}>
-        <Link to={}>Detail Profile</Link>
-        <Link to={}>Log Out</Link>
+        <Link to={'/purchase-order'}>Detail Profile</Link>
+        <Link to={'/purchase-order'}>Log Out</Link>
       </div>
     </div>
 

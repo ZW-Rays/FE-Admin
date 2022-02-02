@@ -12,6 +12,7 @@
     transform: translateY(-50%);
     background-color: #fff;
     padding: 0rem 1rem;
+    white-space: nowrap;
 }
 
 .card-contents {
