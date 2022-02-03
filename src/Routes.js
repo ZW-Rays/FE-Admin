@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import LoginPage from 'pages/login-page/LoginPage';
 import {
     BrowserRouter as Router,
@@ -31,11 +31,13 @@ export default function SetupRoutes() {
 }
 
 function WithNavbar() {
+    const [isSidebarOpen, setIsSidebarOpen] = useState(true)
+
     return (
         <>
-            <Navbar />
+            <Navbar setIsSidebarOpen={setIsSidebarOpen} />
             <div className='d-flex'>
-                <Sidebar />
+                <Sidebar isOpen={isSidebarOpen} />
                 <div className='p-6 w-full'>
                     <Outlet />
                 </div>

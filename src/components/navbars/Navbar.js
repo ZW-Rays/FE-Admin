@@ -2,14 +2,14 @@ import React from 'react';
 import style from './Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faBars } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
 
-export default function Navbar() {
+export default function Navbar({ setIsSidebarOpen }) {
+
   return (
   <div className={style['navbar']}>
     <div className={style['navbar-container']}>
       <div className={style['navbar-left']}>
-        <FontAwesomeIcon icon={faBars} fixedWidth className={style['navbar-icon']}/>
+        <FontAwesomeIcon icon={faBars} fixedWidth className={style['navbar-icon']} onClick={() => setIsSidebarOpen(prevVal => !prevVal)} />
         <h1 className="f-6">LOGO</h1>
       </div>
       <div className={style['navbar-right']}>
