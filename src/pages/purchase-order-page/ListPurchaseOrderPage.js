@@ -110,7 +110,7 @@ export default function ListPurchaseOrderPage() {
 function LinkActions() {
   return (
     <div>
-      <Link className='mr-1' to='/create'>
+      <Link className='mr-1' to='/purchase-order/create'>
         <Button 
           padding='.8rem 2rem'
           label='Create'/>

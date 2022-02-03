@@ -9,6 +9,7 @@
     --grey-color3: #808080;
     --dark-color1: #333333;
     --add-color1: #e0ebff;
+    --add-color-red: #f00;
 }
 
 * {
@@ -40,6 +41,10 @@ body, input {
 */
 .d-flex {
     display: flex;
+}
+
+.content-end {
+    justify-content: end;
 }
 
 .content-center {
@@ -241,6 +246,10 @@ body, input {
 /* 
     Left
 */
+.ml-auto {
+    margin-left: auto;
+}
+
 .ml-1 {
     margin-left: .5rem !important;
 }
