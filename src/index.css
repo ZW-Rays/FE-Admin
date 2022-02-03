@@ -464,6 +464,10 @@ body, input {
     text-decoration: none;
 }
 
+.-f-1 {
+    font-size: .8rem;
+}
+
 .f-1 {
     font-size: 1rem;
 }
