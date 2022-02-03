@@ -3,14 +3,24 @@ import LoginPage from 'pages/login-page/LoginPage';
 import {
     BrowserRouter as Router,
     Routes,
-    Route
-    // Outlet
+    Route,
+    Outlet
 } from "react-router-dom";
+import PurchaseOrderPage from 'pages/purchase-order-page/PurchaseOrderPage';
+import Navbar from 'components/navbars/Navbar';
+import Sidebar from 'components/sidebars/Sidebar';
 
 export default function SetupRoutes() {
     return (
         <Router>
             <Routes>
+                {/*
+                    With Navbar and Sidebar
+                */}
+                <Route path="/" element={<WithNavbar />}>
+                    <Route path="/purchase-order" element={<PurchaseOrderPage />}/>
+                </Route>
+
                 {/* 
                     Login Page
                 */}
@@ -20,11 +30,14 @@ export default function SetupRoutes() {
     )
 }
 
-// function WithNavbar() {
-//     return (
-//         <>
-//             <Navbar />
-//             <Outlet />
-//         </>
-//     )
-// }
+function WithNavbar() {
+    return (
+        <>
+            <Navbar />
+            <div className='d-flex'>
+                <Sidebar />
+                <Outlet />
+            </div>
+        </>
+    )
+}
