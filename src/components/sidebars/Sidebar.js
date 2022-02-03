@@ -6,7 +6,6 @@ import {
     Link,
     useResolvedPath,
     useMatch } from 'react-router-dom';
-import appendClass from 'utils/class';
 
 const LINKS = [
     {
@@ -55,19 +54,24 @@ export default function Sidebar() {
 
     const isOpen = true
 
+    let isOpenClass = Style['sidebar']
+    if (!isOpen) {
+        isOpenClass += ` ${Style['sidebar-close']}`
+    }
+
   return (
-    <div className={Style['sidebar']}>
+    <div className={isOpenClass}>
         <div className={Style['sidebar-top']}>
-            <SideLinks />
+            <SideLinks isOpen={isOpen}/>
         </div>
         <div className={Style['sidebar-bottom']}>
-            <SideBottom />
+            <SideBottom isOpen={isOpen}/>
         </div>
     </div>
   );
 }
 
-function SideLinks() {
+function SideLinks({isOpen = true}) {
     return (
         <div className={`${Style['sidebar-menu']}`}>
             {LINKS.map((link, i) => (
@@ -75,14 +79,15 @@ function SideLinks() {
                     key={i} 
                     to={link.to} 
                     label={link.label} 
-                    icon={link.icon} />
+                    icon={link.icon}
+                    isOpen={isOpen} />
             ))}
         </div>
     )
 }
 
 
-function SideLink({ to = '', label = '', icon = ''}) {
+function SideLink({ to = '', label = '', icon = '', isOpen = true}) {
     let resolved = useResolvedPath(to)
     let match = useMatch({ path: resolved.pathname, end: true })
 
@@ -91,22 +96,34 @@ function SideLink({ to = '', label = '', icon = ''}) {
         currentClass += ` ${Style['sidebar-content-active']}`
     }
 
+
+    let isOpenClass = Style['label']
+    if (!isOpen) {
+        isOpenClass += ` ${Style['label-close']}`
+    }
+
     return (
         <Link to={to} className='text-decoration-none'>
             <div className={currentClass}>
                 <FontAwesomeIcon icon={icon} fixedWidth className={'menu-icon'} />
-                <span className={'menu-label'}>{label}</span>
+                <span className={isOpenClass}>{label}</span>
             </div>
         </Link>
     )
 }
 
-function SideBottom() {
+function SideBottom({isOpen = true}) {
+    
+    let isOpenClass = Style['label']
+    if (!isOpen) {
+        isOpenClass += ` ${Style['label-close']}`
+    }
+
     return (
         <Link to={'/logout'} className='text-decoration-none'>
             <div className={Style['sidebar-content']}>
                 <FontAwesomeIcon icon={faSignOutAlt}  fixedWidth className={'menu-icon'}/>
-                <span className={'menu-label'}>LogOut</span>
+                <span className={isOpenClass}>LogOut</span>
             </div>
         </Link>
     )
