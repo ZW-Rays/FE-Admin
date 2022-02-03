@@ -6,7 +6,7 @@ import {
     Route,
     Outlet
 } from "react-router-dom";
-import PurchaseOrderPage from 'pages/purchase-order-page/PurchaseOrderPage';
+import ListPurchaseOrderPage from 'pages/purchase-order-page/ListPurchaseOrderPage';
 import Navbar from 'components/navbars/Navbar';
 import Sidebar from 'components/sidebars/Sidebar';
 
@@ -18,7 +18,7 @@ export default function SetupRoutes() {
                     With Navbar and Sidebar
                 */}
                 <Route path="/" element={<WithNavbar />}>
-                    <Route path="/purchase-order" element={<PurchaseOrderPage />}/>
+                    <Route path="/purchase-order" element={<ListPurchaseOrderPage />}/>
                 </Route>
 
                 {/* 
@@ -36,7 +36,9 @@ function WithNavbar() {
             <Navbar />
             <div className='d-flex'>
                 <Sidebar />
-                <Outlet />
+                <div className='p-6 w-full'>
+                    <Outlet />
+                </div>
             </div>
         </>
     )

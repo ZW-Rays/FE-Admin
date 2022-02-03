@@ -1,7 +1,8 @@
 import React from 'react';
+import appendClass from 'utils/class';
 import styles from './Table.module.css'
 
-export default function Table({ full = true, align = 'center' }) {
+const Table = ({ children, full = true, align = 'center', className = '', style }) => {
     let tableClass = styles.table
 
     if (full) {
@@ -17,46 +18,38 @@ export default function Table({ full = true, align = 'center' }) {
     }
 
     return (
-        <table className={tableClass}>
-            <thead className={styles['table-head']}>
-                <tr>
-                    <th>Item Number</th>
-                    <th>Item Name</th>
-                    <th>Quantity</th>
-                    <th>UOM</th>
-                    <th>Target Delivery</th>
-                </tr>
-            </thead>
-            <tbody className={styles['table-body']}>
-                <tr>
-                    <td>Item Number</td>
-                    <td>Item Name</td>
-                    <td>Quantity</td>
-                    <td>UOM</td>
-                    <td>Target Delivery</td>
-                </tr>
-                <tr>
-                    <td>Item Number</td>
-                    <td>Item Name</td>
-                    <td>Quantity</td>
-                    <td>UOM</td>
-                    <td>Target Delivery</td>
-                </tr>
-                <tr>
-                    <td>Item Number</td>
-                    <td>Item Name</td>
-                    <td>Quantity</td>
-                    <td>UOM</td>
-                    <td>Target Delivery</td>
-                </tr>
-                <tr>
-                    <td>Item Number</td>
-                    <td>Item Name</td>
-                    <td>Quantity</td>
-                    <td>UOM</td>
-                    <td>Target Delivery</td>
-                </tr>
-            </tbody>
+        <table className={appendClass(tableClass, className)} style={style}>
+            { children }
         </table>
     );
 }
+
+Table.THead = ({ children, className }) => {
+    return (
+        <thead className={appendClass(styles['table-head'], className)}>
+            { children }
+        </thead>
+    )
+}
+
+Table.TBody = ({ children, className }) => {
+    return (
+        <tbody className={appendClass(styles['table-body'], className)}>
+            {children}
+        </tbody>
+    )
+}
+
+Table.TRow = ({ children, className }) => {
+    return <tr className={className}>{ children }</tr>
+}
+
+Table.TD = ({ children, className }) => {
+    return <td className={className}>{ children }</td>
+}
+
+Table.TH = ({ children, className }) => {
+    return <th className={className}>{ children }</th>
+}
+
+export default Table
