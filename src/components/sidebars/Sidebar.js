@@ -50,10 +50,7 @@ const LINKS = [
     },
 ]
 
-export default function Sidebar() {
-
-    const isOpen = true
-
+export default function Sidebar({ isOpen = true }) {
     let isOpenClass = Style['sidebar']
     if (!isOpen) {
         isOpenClass += ` ${Style['sidebar-close']}`
