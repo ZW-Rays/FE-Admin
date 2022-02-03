@@ -1,25 +1,24 @@
 import React from 'react';
 import style from './Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUser } from '@fortawesome/free-solid-svg-icons'
-import Container from 'components/containers/Container'
+import { faUser, faBars } from '@fortawesome/free-solid-svg-icons'
 import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   return (
   <div className={style['navbar']}>
-    <Container className={style['navbar-container']}>
-    <h1 className="f-6">LOGO</h1>
-    <div className={style['navbar-dropdown']}>
-      <button className={style['navbar-dropdown-btn']}>
-        <FontAwesomeIcon icon={faUser} size='2x'/>
-      </button>
-      <div className={style['navbar-dropdown-content']}>
-        <Link to={'/purchase-order'}>Detail Profile</Link>
-        <Link to={'/purchase-order'}>Log Out</Link>
+    <div className={style['navbar-container']}>
+      <div className={style['navbar-left']}>
+        <FontAwesomeIcon icon={faBars} fixedWidth className={style['navbar-icon']}/>
+        <h1 className="f-6">LOGO</h1>
+      </div>
+      <div className={style['navbar-right']}>
+        <div className={style['navbar-dropdown']}>
+          <button className={style['navbar-dropdown-btn']}>
+            <FontAwesomeIcon icon={faUser} size='2x'/>
+          </button>
+        </div>
       </div>
     </div>
-
-    </Container>
   </div>);
 }

@@ -79,6 +79,10 @@ body, input {
     color: var(--grey-color3) !important;
 }
 
+.main-color3 {
+    color: var(--main-color3) !important;
+}
+
 /* 
     Background colors
 */
@@ -536,4 +540,9 @@ body, input {
 
 .cursor-pointer {
     cursor: pointer;
+}
+
+/* Oki Variabel */
+:root{
+    --header-height:4rem;
 }
