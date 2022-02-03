@@ -1,0 +1,27 @@
+.pagination {
+    display: flex;
+    align-items: center;
+}
+
+.pagination-item, 
+.pagination-arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    width: 2.5em;
+    height: 2.5em;
+    cursor: pointer;
+    user-select: none;
+}
+
+.pagination-item:hover,
+.pagination-arrow:hover {
+    background-color: var(--main-color1);
+    color: #fff;
+}
+
+.pagination-items {
+    display: flex;
+    align-items: center;
+}
