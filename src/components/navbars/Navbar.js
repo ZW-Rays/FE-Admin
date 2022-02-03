@@ -2,7 +2,6 @@ import React from 'react';
 import style from './Navbar.module.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faBars } from '@fortawesome/free-solid-svg-icons'
-import { Link } from 'react-router-dom';
 
 export default function Navbar() {
   return (
