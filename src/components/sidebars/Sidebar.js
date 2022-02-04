@@ -6,6 +6,7 @@ import {
     Link,
     useResolvedPath,
     useMatch } from 'react-router-dom';
+import appendClass from 'utils/class';
 
 const LINKS = [
     {
@@ -102,7 +103,7 @@ function SideLink({ to = '', label = '', icon = '', isOpen = true}) {
     return (
         <Link to={to} className='text-decoration-none'>
             <div className={currentClass}>
-                <FontAwesomeIcon icon={icon} fixedWidth className={'menu-icon'} />
+                <FontAwesomeIcon icon={icon} fixedWidth />
                 <span className={isOpenClass}>{label}</span>
             </div>
         </Link>
@@ -118,8 +119,8 @@ function SideBottom({isOpen = true}) {
 
     return (
         <Link to={'/logout'} className='text-decoration-none'>
-            <div className={Style['sidebar-content']}>
-                <FontAwesomeIcon icon={faSignOutAlt}  fixedWidth className={'menu-icon'}/>
+            <div className={appendClass(Style['sidebar-content'], Style['sidebar-logout'])}>
+                <FontAwesomeIcon icon={faSignOutAlt}  fixedWidth />
                 <span className={isOpenClass}>LogOut</span>
             </div>
         </Link>

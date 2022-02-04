@@ -10,6 +10,7 @@ import ListPurchaseOrderPage from 'pages/purchase-order-page/ListPurchaseOrderPa
 import CreatePurchaseOrderPage from 'pages/purchase-order-page/CreatePurchaseOrderPage';
 import Navbar from 'components/navbars/Navbar';
 import Sidebar from 'components/sidebars/Sidebar';
+import ListProductPage from 'pages/product-page/ListProductPage';
 
 export default function SetupRoutes() {
     return (
@@ -19,8 +20,15 @@ export default function SetupRoutes() {
                     With Navbar and Sidebar
                 */}
                 <Route path="/" element={<WithNavbar />}>
+                    {/* 
+                        Purchase Order
+                    */}
                     <Route path="/purchase-order" element={<ListPurchaseOrderPage />}/>
                     <Route path="/purchase-order/create" element={<CreatePurchaseOrderPage /> } />
+                    {/* 
+                        Product
+                    */}
+                    <Route path="/product" element={<ListProductPage />}/>
                 </Route>
 
                 {/* 
