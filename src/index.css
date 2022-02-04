@@ -560,6 +560,6 @@ body, input {
     --header-height:4rem;
 }
 
-.max-widht-content {
-    max-width: '1500px';
+.max-width-content {
+    max-width: 1500px;
 }

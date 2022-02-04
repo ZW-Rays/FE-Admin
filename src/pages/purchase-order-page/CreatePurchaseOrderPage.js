@@ -34,10 +34,10 @@ export default function PurchaseOrderPage() {
               </Table.TBody>
             </Table>
             </div>
-            <div className='d-flex content-end'>
-              <Button label='Save' className='mr-1' padding='0 1.5rem'/>
+            <div>
+              <Button label='Save' className='mr-1' padding='.8rem 1.5rem' />
               <Link to={'/purchase-order'}>
-                <Button label='Cancel'/>
+                <Button label='Cancel' padding='.8rem 1.5rem'/>
               </Link>
             </div>
         </LabeledCard>

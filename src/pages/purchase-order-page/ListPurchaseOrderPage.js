@@ -7,13 +7,13 @@ import { Link } from 'react-router-dom';
 
 export default function ListPurchaseOrderPage() {
   return (
-    <div style={{ maxWidth: '1500px' }}>
+    <div className='max-width-content'>
       <h1 className='mb-6'>List Purchase Order</h1>
       <div className='mb-3 d-flex content-between items-center'>
         <LinkActions />
         <SearchInput style={{ maxWidth: '300px' }} />
       </div>
-      <Table className='f-1 mb-5' style={{ maxWidth: '1500px' }} full>
+      <Table className='f-1 mb-5 max-width-content' full>
         <Table.THead>
           <Table.TRow>
             <Table.TH>PO Number</Table.TH>

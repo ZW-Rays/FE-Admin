@@ -11,6 +11,8 @@ import CreatePurchaseOrderPage from 'pages/purchase-order-page/CreatePurchaseOrd
 import Navbar from 'components/navbars/Navbar';
 import Sidebar from 'components/sidebars/Sidebar';
 import ListProductPage from 'pages/product-page/ListProductPage';
+import CreateProductPage from 'pages/product-page/CreateProductPage';
+import UpdateProductPage from 'pages/product-page/UpdateProductPage';
 
 export default function SetupRoutes() {
     return (
@@ -29,6 +31,8 @@ export default function SetupRoutes() {
                         Product
                     */}
                     <Route path="/product" element={<ListProductPage />}/>
+                    <Route path="/product/create" element={<CreateProductPage />}/>
+                    <Route path="/product/update" element={<UpdateProductPage />}/>
                 </Route>
 
                 {/* 
