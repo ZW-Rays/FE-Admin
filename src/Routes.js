@@ -13,6 +13,8 @@ import Sidebar from 'components/sidebars/Sidebar';
 import ListProductPage from 'pages/product-page/ListProductPage';
 import CreateProductPage from 'pages/product-page/CreateProductPage';
 import UpdateProductPage from 'pages/product-page/UpdateProductPage';
+import ListTravelDocumentPage from 'pages/travel-document-page/ListTravelDocumentPage';
+import DetailTravelDocumentPage from 'pages/travel-document-page/DetailTravelDocumentPage';
 
 export default function SetupRoutes() {
     return (
@@ -25,14 +27,19 @@ export default function SetupRoutes() {
                     {/* 
                         Purchase Order
                     */}
-                    <Route path="/purchase-order" element={<ListPurchaseOrderPage />}/>
+                    <Route path="/purchase-order" element={<ListPurchaseOrderPage />} />
                     <Route path="/purchase-order/create" element={<CreatePurchaseOrderPage /> } />
                     {/* 
                         Product
                     */}
-                    <Route path="/product" element={<ListProductPage />}/>
-                    <Route path="/product/create" element={<CreateProductPage />}/>
-                    <Route path="/product/update" element={<UpdateProductPage />}/>
+                    <Route path="/product" element={<ListProductPage />} />
+                    <Route path="/product/create" element={<CreateProductPage />} />
+                    <Route path="/product/update" element={<UpdateProductPage />} />
+                    {/* 
+                        Travel Document
+                    */}
+                    <Route path="/travel-document" element={<ListTravelDocumentPage />} />
+                    <Route path="/travel-document/detail" element={<DetailTravelDocumentPage />} />
                 </Route>
 
                 {/* 
