@@ -2,22 +2,27 @@ import Button from 'components/buttons/Button';
 import SearchInput from 'components/search-inputs/SearchInput';
 import Table from 'components/tables/Table';
 import React, { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { GET } from 'utils/fetch';
+import { Link, useNavigate } from 'react-router-dom';
+import ProductAPI from 'services/product_service';
+import { getResult } from 'utils/fetch';
 
 export default function ListProductPage() {
+    const navigate = useNavigate()
+
     const [products, setProducts] = useState([])
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const res = await GET('https://a29f1230-db07-4dc4-9cd1-8f6b7ccae6b6.mock.pstmn.io/product')
-            const data = await res.json()
-    
-            setProducts(data.result)
+            const [data, response] = await ProductAPI.GetListProduct()
+            if (!response.ok && response.mustRedirect) {
+                return navigate(response.redirectTo)
+            }
+
+            setProducts(getResult(data).result)
         }
 
         fetchProducts()
-    }, [])
+    }, [navigate])
 
   return (
     <div className='max-width-content'>
@@ -39,10 +44,10 @@ export default function ListProductPage() {
             <Table.TBody>
                 {products.map((product, i) => (
                     <Table.TRow key={i}>
-                        <Table.TD>{product.itemNumber}</Table.TD>
+                        <Table.TD>{product.id}</Table.TD>
                         <Table.TD>{product.productName}</Table.TD>
                         <Table.TD>{product.uom}</Table.TD>
-                        <Table.TD>{product.codeMatrialVendor}</Table.TD>
+                        <Table.TD>{product.materialVendorCode}</Table.TD>
                         <Table.TD>{product.status}</Table.TD>
                     </Table.TRow>
                 ))}
