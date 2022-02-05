@@ -1,28 +1,35 @@
 import Button from 'components/buttons/Button';
+import Pagination from 'components/paginations/Pagination';
 import SearchInput from 'components/search-inputs/SearchInput';
 import Table from 'components/tables/Table';
 import React, { useEffect, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useSearchParams } from 'react-router-dom';
 import ProductAPI from 'services/product_service';
 import { getResult } from 'utils/fetch';
 
 export default function ListProductPage() {
     const navigate = useNavigate()
-
     const [products, setProducts] = useState([])
+    const [pagination, setPagination] = useState({})
+    const [searchParam, setSearchParam] = useSearchParams()
 
     useEffect(() => {
         const fetchProducts = async () => {
-            const [data, response] = await ProductAPI.GetListProduct()
+            if (searchParam.get('page') === null) {
+                setSearchParam({page:1})
+                return
+            }
+            const [data, response] = await ProductAPI.GetListProduct(parseInt(searchParam.get('page')-1))
             if (!response.ok && response.mustRedirect) {
                 return navigate(response.redirectTo)
             }
 
             setProducts(getResult(data).result)
+            setPagination(getResult(data))
         }
 
         fetchProducts()
-    }, [navigate])
+    }, [navigate, searchParam])
 
   return (
     <div className='max-width-content'>
@@ -53,6 +60,7 @@ export default function ListProductPage() {
                 ))}
             </Table.TBody>
         </Table>
+        <Pagination totalPage={pagination.totalPage} limit={7} currentPage={pagination.currentPage+1} onPageClick={(page)=>setSearchParam({page})} />
     </div>
   );
 }

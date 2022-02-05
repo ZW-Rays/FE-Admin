@@ -1,5 +1,5 @@
 .span-error-message {
     color: var(--add-color-red);
-    margin-bottom: 1rem;
+    margin: .5rem 0;
     display: inline-block;
 }
