@@ -7,7 +7,7 @@ import Form from 'components/forms/Form';
 import useFormValidation from 'hooks/useFormValidation';
 
 export default function CreateProductPage() {
-    const [setValidation, errors] = useFormValidation()
+    const [setValidation, getError] = useFormValidation()
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -25,9 +25,9 @@ export default function CreateProductPage() {
             <LabeledCard className='max-width-content' label='Create Product' style={{ width: '100%' }}>
                 <Form onSubmit={handleSubmit}>
                     <LeftLabeledInput name={'itemNumber'} label='Item Number' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
-                    <span>{errors.itemNumber}</span>
+                    <span>{getError('itemNumber')}</span>
                     <LeftLabeledInput name={'productName'} label='Product Name' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
-                    <span>{errors.productName}</span>
+                    <span>{getError('productName')}</span>
                     <LeftLabeledInput label='Matrial Vendor Code' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
                     <LeftLabeledInput label='UOM' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
                     <LeftLabeledInput label='Status' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
