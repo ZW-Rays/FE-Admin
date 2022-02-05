@@ -16,7 +16,8 @@
 }
 
 .pagination-item:hover,
-.pagination-arrow:hover {
+.pagination-arrow:hover,
+.pagination-active {
     background-color: var(--main-color1);
     color: #fff;
 }

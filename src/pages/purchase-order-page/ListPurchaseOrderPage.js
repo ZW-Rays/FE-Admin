@@ -97,12 +97,12 @@ export default function ListPurchaseOrderPage() {
         </Table.TBody>
       </Table>
 
-      <Pagination>
-        <Pagination.Item iteration={1}/>
-        <Pagination.Item iteration={2}/>
-        <Pagination.Item iteration={3}/>
-        <Pagination.Item iteration={4}/>
-      </Pagination>
+      <Pagination 
+        totalPage={20}
+        currentPage={1}
+        startPage={1}
+        limit={10}
+      />
     </div>
   );
 }
