@@ -1,3 +1,3 @@
 export default function appendClass(...classes) {
-    return classes.join(' ')
+    return classes.join(' ').trim()
 }
