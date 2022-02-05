@@ -4,7 +4,15 @@ import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
 import styles from './Select.module.css'
 import appendClass from 'utils/class'
 
-export default function Select({ className = '', label = '', labelWidth = '15rem', defaultValue, data = [], style }) {
+export default function Select({ 
+    className = '', 
+    label = '', 
+    labelWidth = '15rem', 
+    data = [], 
+    defaultValue, 
+    style, 
+    onChange 
+}) {
     const [selectedValue, setSelectedValue] = useState(() => {
         if (defaultValue) {
             return data.find(item => item.value === defaultValue)
@@ -48,28 +56,28 @@ export default function Select({ className = '', label = '', labelWidth = '15rem
                 break
             case "ArrowUp":
                 setIndexActive(prev => {
-                    const newIndex = prev - 1
-
-                    if (prev !== 0) {
-                        prev = newIndex
+                    if (prev === 0) {
+                        return prev
                     }
- 
-                    dropdownSelectRef.current.children[prev].scrollIntoView({ block: 'nearest' })
-                    setSelectedValue(data[prev])
-                    return prev
+
+                    const newIndex = prev - 1
+                    dropdownSelectRef.current.children[newIndex].scrollIntoView({ block: 'nearest' })
+                    onChange(data[newIndex])
+                    setSelectedValue(data[newIndex])
+                    return newIndex
                 })
                 break
             case "ArrowDown":
                 setIndexActive(prev => {
-                    const newIndex = prev + 1
-
-                    if (prev !== lastIndex) {
-                        prev = newIndex
+                    if (prev === lastIndex) {
+                        return prev
                     }
 
-                    dropdownSelectRef.current.children[prev].scrollIntoView({ block: 'nearest' })
-                    setSelectedValue(data[prev])
-                    return prev
+                    const newIndex = prev + 1
+                    dropdownSelectRef.current.children[newIndex].scrollIntoView({ block: 'nearest' })
+                    onChange(data[newIndex])
+                    setSelectedValue(data[newIndex])
+                    return newIndex
                 })
                 break
             default :
@@ -98,7 +106,10 @@ export default function Select({ className = '', label = '', labelWidth = '15rem
                         <Option 
                             key={i} 
                             className={`${item.value === selectedValue?.value ? styles['select-dropdown-selected'] : ''}`}
-                            onClick={() => setSelectedValue(item)}
+                            onClick={() => {
+                                onChange(item)
+                                setSelectedValue(item)
+                            }}
                             onMouseOver={() => setIndexActive(i)}
                             label={item.label}
                         />
