@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import styles from './Pagination.module.css'
@@ -60,7 +60,7 @@ function Iterate({
         setPageNow(i)
 
         const middle = Math.ceil((start + (start + (limit - 1))) / 2)
-        
+
         if (i < middle) {
             setStart(prev => {
                 const newStart = (i - middle) + prev

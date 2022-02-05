@@ -1,10 +1,10 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useEffect, useRef, useState } from 'react'
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons'
-import styles from './Select.module.css'
+import styles from './LeftLabeledSelect.module.css'
 import appendClass from 'utils/class'
 
-export default function Select({ 
+export default function LeftLabeledSelect({ 
     className = '', 
     label = '', 
     labelWidth = '15rem', 
@@ -21,7 +21,7 @@ export default function Select({
         return data[0]
     })
     const [isOpen, setIsOpen] = useState(false)
-    const [, setIndexActive] = useState(() => {
+    const [indexActive, setIndexActive] = useState(() => {
         if (selectedValue !== undefined) {
             return data.findIndex(item => item.value === selectedValue.value)
         }
@@ -55,30 +55,27 @@ export default function Select({
                 setIsOpen(prev => !prev)
                 break
             case "ArrowUp":
-                setIndexActive(prev => {
-                    if (prev === 0) {
-                        return prev
-                    }
+                if (indexActive === 0) {
+                    return
+                }
 
-                    const newIndex = prev - 1
-                    dropdownSelectRef.current.children[newIndex].scrollIntoView({ block: 'nearest' })
-                    onChange(data[newIndex])
-                    setSelectedValue(data[newIndex])
-                    return newIndex
-                })
+                const arrowUpIndex = indexActive - 1
+                
+                dropdownSelectRef.current.children[arrowUpIndex].scrollIntoView({ block: 'nearest' })
+                onChange(data[arrowUpIndex])
+                setSelectedValue(data[arrowUpIndex])
+                setIndexActive(arrowUpIndex)
                 break
             case "ArrowDown":
-                setIndexActive(prev => {
-                    if (prev === lastIndex) {
-                        return prev
-                    }
-
-                    const newIndex = prev + 1
-                    dropdownSelectRef.current.children[newIndex].scrollIntoView({ block: 'nearest' })
-                    onChange(data[newIndex])
-                    setSelectedValue(data[newIndex])
-                    return newIndex
-                })
+                if (indexActive === lastIndex) {
+                    return
+                }
+                const arrowDownIndex = indexActive + 1
+                
+                dropdownSelectRef.current.children[arrowDownIndex].scrollIntoView({ block: 'nearest' })
+                onChange(data[arrowDownIndex])
+                setSelectedValue(data[arrowDownIndex])
+                setIndexActive(arrowDownIndex)
                 break
             default :
                 return
