@@ -94,7 +94,7 @@ export default function Select({
             onBlur={() => setIsOpen(false)}
             style={style}
         >
-            <label style={{ width: labelWidth }} htmlFor='abc'>{label}</label>
+            <label style={{ width: labelWidth }}>{label}</label>
             <div 
                 className={`${styles['select-input']} ${isOpen ? styles['open'] : ''}`} 
                 onClick={() => setIsOpen(prev => !prev)}
