@@ -8,7 +8,8 @@ export default function Button({
     transparent = false,
     full = false, 
     padding = '',
-    fontSize = ''
+    fontSize = '',
+    disabled = false
 }) {
     let buttonClass = styles.button
     let style = {}
@@ -21,10 +22,13 @@ export default function Button({
 
     if (fontSize !== '') style.fontSize = fontSize
 
+    if (disabled) buttonClass = styles['button-disabled']
+
     return (
         <button 
             className={`${buttonClass} ${className}`} 
             type={type} 
-            style={style}>{label}</button>
+            style={style}
+            disabled={disabled}>{label}</button>
     )
 }
