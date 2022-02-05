@@ -2,11 +2,14 @@ import React from 'react';
 import styles from './ErrorMessage.module.css'
 
 export default function ErrorMessage({
-    message = ''
+    message = '',
+    isError = false
 }) {
+  let styleErrorMessage = ''
+  if (isError) styleErrorMessage = styles['span-error-message']
   return (
   <div>
-      <span className={styles['span-error-message']}>{message}</span>
+      <span className={styleErrorMessage}>{message}</span>
   </div>
   );
 }
