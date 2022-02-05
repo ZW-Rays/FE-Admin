@@ -6,8 +6,6 @@ import {
     Route,
     Outlet
 } from "react-router-dom";
-import ListPurchaseOrderPage from 'pages/purchase-order-page/ListPurchaseOrderPage';
-import CreatePurchaseOrderPage from 'pages/purchase-order-page/CreatePurchaseOrderPage';
 import Navbar from 'components/navbars/Navbar';
 import Sidebar from 'components/sidebars/Sidebar';
 import ListProductPage from 'pages/product-page/ListProductPage';
@@ -15,6 +13,9 @@ import CreateProductPage from 'pages/product-page/CreateProductPage';
 import UpdateProductPage from 'pages/product-page/UpdateProductPage';
 import ListTravelDocumentPage from 'pages/travel-document-page/ListTravelDocumentPage';
 import DetailTravelDocumentPage from 'pages/travel-document-page/DetailTravelDocumentPage';
+import ClientPath from 'paths/client_paths';
+import ListPurchaseOrderPage from 'pages/purchase-order-page/ListPurchaseOrderPage';
+import CreatePurchaseOrderPage from 'pages/purchase-order-page/CreatePurchaseOrderPage';
 
 export default function SetupRoutes() {
     return (
@@ -40,12 +41,20 @@ export default function SetupRoutes() {
                     */}
                     <Route path="/travel-document" element={<ListTravelDocumentPage />} />
                     <Route path="/travel-document/detail" element={<DetailTravelDocumentPage />} />
+                    <Route path={ClientPath.ListPurchaseOrder} element={<ListPurchaseOrderPage />}/>
+                    <Route path={ClientPath.CreatePurchaseOrder} element={<CreatePurchaseOrderPage /> } />
+                    {/* 
+                        Product
+                    */}
+                    <Route path={ClientPath.ListProduct} element={<ListProductPage />}/>
+                    <Route path={ClientPath.CreateProduct} element={<CreateProductPage />}/>
+                    <Route path={ClientPath.UpdateProduct} element={<UpdateProductPage />}/>
                 </Route>
 
                 {/* 
                     Login Page
                 */}
-                <Route path="/login" element={<LoginPage />} />
+                <Route path={ClientPath.Login} element={<LoginPage />} />
             </Routes>
         </Router>        
     )

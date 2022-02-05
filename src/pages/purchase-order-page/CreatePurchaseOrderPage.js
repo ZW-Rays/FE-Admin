@@ -5,7 +5,7 @@ import Table from 'components/tables/Table';
 import Button from 'components/buttons/Button';
 import { Link } from 'react-router-dom';
 
-export default function PurchaseOrderPage() {
+export default function CreatePurchaseOrderPage() {
   return (
     <div className='w-full p-3'>
         <LabeledCard label='Create Purchase Order' style={{ width: '100%' }}>
