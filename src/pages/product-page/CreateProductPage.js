@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import LabeledCard from 'components/cards/labeled-card/LabeledCard';
 import LeftLabeledInput from 'components/inputs/left-labeled-input/LeftLabeledInput';
 import Button from 'components/buttons/Button';
 import { Link, useNavigate } from 'react-router-dom';
 import Form from 'components/forms/Form';
 import useFormValidation from 'hooks/useFormValidation';
+import LeftLabeledSelect from 'components/selects/left-labeled-select/LeftLabeledSelect';
 import ErrorsMessage from 'components/errors-message/ErrorMessage';
 import ProductAPI from 'services/product_service';
 import ClientPath from 'paths/client_paths';
@@ -13,6 +14,34 @@ export default function CreateProductPage() {
     const [setValidation, getError, isError] = useFormValidation()
     let data = {}
     const navigate = useNavigate()
+
+    /*
+        State untuk menampung data dari Select
+    */
+    const [status, setStatus] = useState('')
+
+    /* 
+        Data ini biasanya di dapat di API
+    */
+    const dataSelect = [
+        {
+            label: 'Active',
+            value: 'A'
+        },
+        {
+            label: 'In Active',
+            value: 'I'
+        },
+        {
+            label: 'Discontinue',
+            value: 'D'
+        }
+    ] 
+
+    /*
+        Print hasil
+    */
+    console.log(status)
 
     const handleSubmit = e => {
         e.preventDefault()
@@ -41,6 +70,7 @@ export default function CreateProductPage() {
         fetchCreateProduct()
     }
 
+
     return (
         <div className='w-full'>
             <LabeledCard className='max-width-content' label='Create Product' style={{ width: '100%' }}>
@@ -48,6 +78,18 @@ export default function CreateProductPage() {
                     <LeftLabeledInput name={'itemNumber'} label='Item Number' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
                     <ErrorsMessage message={getError('itemNumber')} isError={isError('itemNumber')} />
                     <LeftLabeledInput name={'productName'} label='Product Name' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
+                    <span>{getError('productName')}</span>
+                    <LeftLabeledInput label='Matrial Vendor Code' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
+                    <LeftLabeledInput label='UOM' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
+                    <LeftLabeledSelect 
+                        label='Status' 
+                        labelWidth='20rem' 
+                        data={dataSelect}
+                        defaultValue='D'
+                        className='mb-1' 
+                        style={{maxWidth:'550px'}} 
+                        onChange={(value) => setStatus(value.value)} 
+                    />
                     <ErrorsMessage message={getError('productName')} isError={isError('productName')}/>
                     <LeftLabeledInput name={'materialVendorCode'} label='Matrial Vendor Code' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
                     <ErrorsMessage message={getError('materialVendorCode')} isError={isError('materialVendorCode')}/>
