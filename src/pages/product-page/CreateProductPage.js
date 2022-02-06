@@ -25,7 +25,7 @@ export default function CreateProductPage() {
         data = {
             itemNumber : input.itemNumber.value,
             productName : input.productName.value,
-            materialVendorCode : input.matrialVendorCode.value,
+            materialVendorCode : input.materialVendorCode.value,
             uom : input.uom.value,
             status : input.status.value
         }
@@ -49,8 +49,8 @@ export default function CreateProductPage() {
                     <ErrorsMessage message={getError('itemNumber')} isError={isError('itemNumber')} />
                     <LeftLabeledInput name={'productName'} label='Product Name' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
                     <ErrorsMessage message={getError('productName')} isError={isError('productName')}/>
-                    <LeftLabeledInput name={'matrialVendorCode'} label='Matrial Vendor Code' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
-                    <ErrorsMessage message={getError('matrialVendorCode')} isError={isError('matrialVendorCode')}/>
+                    <LeftLabeledInput name={'materialVendorCode'} label='Matrial Vendor Code' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
+                    <ErrorsMessage message={getError('materialVendorCode')} isError={isError('materialVendorCode')}/>
                     <LeftLabeledInput name={'uom'} label='UOM' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
                     <LeftLabeledInput name={'status'} label='Status' labelWidth='20rem' className='mb-1' style={{maxWidth:'550px'}} />
                     <div className='mt-6'>

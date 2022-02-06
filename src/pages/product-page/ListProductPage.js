@@ -46,6 +46,7 @@ export default function ListProductPage() {
                     <Table.TH>UOM</Table.TH>
                     <Table.TH>Code Matrial Vendor</Table.TH>
                     <Table.TH>Status</Table.TH>
+                    <Table.TH>Action</Table.TH>
                 </Table.TRow>
             </Table.THead>
             <Table.TBody>
@@ -56,11 +57,16 @@ export default function ListProductPage() {
                         <Table.TD>{product.uom}</Table.TD>
                         <Table.TD>{product.materialVendorCode}</Table.TD>
                         <Table.TD>{product.status}</Table.TD>
+                        <Table.TD>
+                            <Link to={'/product/update/'+product.id} >
+                                <Button padding='.8rem 2rem' label='Update'/>
+                            </Link>
+                        </Table.TD>
                     </Table.TRow>
                 ))}
             </Table.TBody>
         </Table>
-        <Pagination totalPage={pagination.totalPage} limit={7} currentPage={pagination.currentPage+1} onPageClick={(page)=>setSearchParam({page})} />
+        <Pagination totalPage={pagination.totalPage} currentPage={pagination.currentPage+1} onPageClick={(page)=>setSearchParam({page})} />
     </div>
   );
 }
@@ -68,11 +74,8 @@ export default function ListProductPage() {
 function LinkActions() {
     return (
         <div>
-            <Link className='mr-1' to='/product/create'>
+            <Link to='/product/create'>
                 <Button padding='.8rem 2rem' label='Create'/>
-            </Link>
-            <Link to='/product/update'>
-                <Button padding='.8rem 2rem' label='Update'/>
             </Link>
         </div>
     )

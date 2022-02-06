@@ -21,6 +21,6 @@ ClientPath.CreatePurchaseOrder = '/purchase-order/create'
 */
 ClientPath.ListProduct = '/product'
 ClientPath.CreateProduct = '/product/create'
-ClientPath.UpdateProduct = '/product/update'
+ClientPath.UpdateProduct = '/product/update/:id'
 
 export default ClientPath

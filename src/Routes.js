@@ -33,9 +33,9 @@ export default function SetupRoutes() {
                     {/* 
                         Product
                     */}
-                    <Route path="/product" element={<ListProductPage />} />
-                    <Route path="/product/create" element={<CreateProductPage />} />
-                    <Route path="/product/update" element={<UpdateProductPage />} />
+                    <Route path={ClientPath.ListProduct} element={<ListProductPage />} />
+                    <Route path={ClientPath.CreateProduct} element={<CreateProductPage />} />
+                    <Route path={ClientPath.UpdateProduct} element={<UpdateProductPage />} />
                     {/* 
                         Travel Document
                     */}
