@@ -23,4 +23,10 @@ ClientPath.ListProduct = '/product'
 ClientPath.CreateProduct = '/product/create'
 ClientPath.UpdateProduct = '/product/update/:id'
 
+/*
+    Delivery Order
+*/
+ClientPath.ListDeliveryOrder = '/delivery-order'
+ClientPath.DetailDeliveryOrder = '/delivery-order/detail'
+
 export default ClientPath

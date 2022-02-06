@@ -30,8 +30,8 @@ const LINKS = [
         icon: faBox,
     },
     {
-        to: '/travel-document',
-        label: 'Travel Document',
+        to: '/delivery-order',
+        label: 'Delivery Order',
         icon: faPassport,
     },
     {

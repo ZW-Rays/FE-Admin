@@ -34,7 +34,7 @@ export default function UpdateProductPage() {
         }
 
         fetchProductsDetail()
-    }, [navigate])
+    })
     
     const handleChange = e => {
         e.preventDefault()
